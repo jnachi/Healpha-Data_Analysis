@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lets finish</title>
+    <a href="http://concent.in/" ><img src="C:\Users\91984\branch\static\logo2.png" alt="Smiley face" ></a>
+    <br>
+<!--    <link rel="stylesheet" type="text/css" href="style.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="C:\Users\91984\server\static\jhxlsx.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+        crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <script>
+    $.ajaxSetup({
+    crossDomain:true,
+    type:'POST',
+    contentType:'application/json;charset-utf-08',
+    dataType:'json',
+    })
+    </script>
+     <script>
+function validateForm() {
+  var x = document.forms["form"]["fname"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
+</script>
+    <script>
+                $.ajax(
+                {
+                    type:'POST',
+                    contentType:'application/json;charset-utf-08',
+                    dataType:'json',
+                    url:'http://127.0.0.1:5000/test',
+<!--                    data: JSON.stringify(wi),-->
+                    success:function (data) {
+                    window.input=data
+                    console.log(data)
+
+                    }
+  });
+    </script>
+
+        <script>
+
+function branch_pop(){
+window.id=[]
+window.id.push('change1')
+$('#ab').show();
+console.log(window.id)
+for(i=0;i<window.id.length;i++)
+{
+branch_id=Object.keys(window.input[0]);
+console.log('branch_id')
+
+for (j=0;j<branch_id.length+1; j++)
+{
+    var x = document.getElementById(window.id[i]);
+    x.remove(x.options[1]);
+}
+ var select = document.getElementById(window.id[i]);
+ var option = document.createElement('OPTION');
+ txt = document.createTextNode('all');
+ option.appendChild(txt);
+ option.setAttribute('value','all');
+ select.add(option,select.lastChild);
+
+ for(var k = 0; k < branch_id.length; k++)
+             {
+                 var option = document.createElement('OPTION');
+                 txt = document.createTextNode(branch_id[k]);
+                 option.appendChild(txt);
+                 option.setAttribute('value',branch_id[k]);
+<!--                 select.insertBefore(option,select.lastChild);-->
+                select.options.add(option)
+
+             }
+  }
+ branch_id.splice(0, branch_id.length);
+}
+</script>
+    <script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+
+    <style>
+  .button {
+  background-color: #595959	;
+  border: none;
+  color: black;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 2px 2px;
+  cursor: pointer;
+}
+<!--#myDiv {-->
+<!--  background-color: light grey;-->
+<!--  width: 500px;-->
+<!--  border: 5px solid black;-->
+<!--  padding: 50px;-->
+<!--  margin: 50px;-->
+<!--}-->
+    </style>
+    <style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+<!--  overflow: visible;-->
+  border: 1px solid #595959;
+  background-color: #595959;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 20px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #f1560c;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ddd;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  -webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+</style>
+      <script>
+window.id=[]
+window.id.push('select1')
+function pop(){
+$('#ab').show();
+for(i=0;i<window.id.length;i++)
+{
+branch_id=Object.keys(window.input[0]);
+for (j=0;j<branch_id.length+1; j++)
+{
+    var x = document.getElementById(window.id[i]);
+    x.remove(x.options[1]);
+}
+ var select = document.getElementById(window.id[i]);
+ var option = document.createElement('OPTION');
+ txt = document.createTextNode('all');
+ option.appendChild(txt);
+ option.setAttribute('value','all');
+ select.add(option,select.lastChild);
+
+ for(var k = 0; k < branch_id.length; k++)
+             {
+                 var option = document.createElement('OPTION');
+                 txt = document.createTextNode(branch_id[k]);
+                 option.appendChild(txt);
+                 option.setAttribute('value',branch_id[k]);
+<!--                 select.insertBefore(option,select.lastChild);-->
+                select.options.add(option)
+
+             }
+  }
+ branch_id.splice(0, branch_id.length);
+}
+</script>
+
+</head>
+<body style="background-color:#737373;">
+    <h1 align="center"> <b> Data Analysis</b></h1>
+    <div class="tab" align="center">
+  <button class="tablinks" onclick="openCity(event, 'aa')">Graph</button>
+        <button class="tablinks" onclick="openCity(event, 'remove')">Excel</button>
+        <button class="tablinks" onclick="openCity(event, 'sun')">SunBurst</button>
+
+</div>
+    <br>
+    <br>
+    <br>
+
+
+<script>
+    function branch(){
+
+    branch_id=Object.keys(window.input[0]);
+    for(i = 0; i < branch_id.length+1; i++)
+    {
+    var x = document.getElementById('select');
+    x.remove(x.options[1]);
+    }
+       var select = document.getElementById('select');
+       var option = document.createElement('OPTION');
+                 txt = document.createTextNode('default');
+                 option.appendChild(txt);
+                 option.setAttribute('value','default');
+                 select.insertBefore(option,select.lastChild);
+             for(var i = 0; i < branch_id.length; i++)
+             {
+                 var option = document.createElement('OPTION');
+                 txt = document.createTextNode(branch_id[i]);
+                 option.appendChild(txt);
+                 option.setAttribute('value',branch_id[i]);
+                 select.insertBefore(option,select.lastChild);
+
+             }
+    branch_id.splice(0, branch_id.length);
+}
+   function branch1(){
+
+    branch_id=Object.keys(window.input[0]);
+    for(i = 0; i < branch_id.length+1; i++)
+    {
+    var x = document.getElementById('select1');
+    x.remove(x.options[1]);
+    }
+       var select = document.getElementById('select1');
+       var option = document.createElement('OPTION');
+                 txt = document.createTextNode('default');
+                 option.appendChild(txt);
+                 option.setAttribute('value','default');
+                 select.insertBefore(option,select.lastChild);
+             for(var i = 0; i < branch_id.length; i++)
+             {
+                 var option = document.createElement('OPTION');
+                 txt = document.createTextNode(branch_id[i]);
+                 option.appendChild(txt);
+                 option.setAttribute('value',branch_id[i]);
+                 select.insertBefore(option,select.lastChild);
+
+             }
+    branch_id.splice(0, branch_id.length);
+
+
+}
+
+
+</script>
+
+<div id ='aa' align='center' class="tabcontent">
+    <form>
+        <fieldset>
+            <legend style="font-size:160%;"><b>Selecting elements</b></legend>
+          <p>
+              <label><b>Select list</b></label>
+             <select id = 'myList' onchange='branch(); branch1();'>
+               <option value='default' >default</option>
+               <option value = red>red</option>
+               <option value = amber>amber</option>
+               <option value = atleast>atleast</option>
+             </select>
+          </p>
+       </fieldset>
+     </form>
+<!--</div>-->
+
+<!--<div id ='ab' align='center'>-->
+<form>
+    <fieldset>
+        <legend style="font-size:160%;"><b>Data to displayed</b></legend>
+        <label><b>Branch list</b></label>
+            <select id='select'>
+<!--            <option value='default'>default</option>-->
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label><b>Branch list</b></label>
+            <select id='select1'>
+        </select>
+
+       </fieldset>
+</form>
+    <br>
+
+    <button type='button' class='button' id='check' onclick='graph()'><b>Display Data</b></button>
+
+<br>
+<div id='myDiv' align ='center'></div>
+</div>
+<script>
+    function graph(){
+
+  var x1 = document.getElementById('select').selectedIndex;
+  var v1 = document.getElementById('select').options;
+  var x = document.getElementById('myList').selectedIndex;
+  var v= document.getElementById('myList').options;
+   var x2 = document.getElementById('select1').selectedIndex;
+  var v2 = document.getElementById('select1').options;
+   var xValue = ['Dental','ENT', 'Vitals','Eye','Physical'];
+
+    var temp1 = $('#select')
+    var temp2 = $('#select1')
+
+var yValue = [window.input[0]['INDTGAAA000011-1']['dental'][v[x].text]+window.input[0]['INDTGAAA000012-1']['dental'][v[x].text]+window.input[0]['INDTGAAA000013-1']['dental'][v[x].text]+window.input[0]['INDTGAAA000014-1']['dental'][v[x].text], window.input[0]['INDTGAAA000011-1']['ent'][v[x].text]+window.input[0]['INDTGAAA000012-1']['ent'][v[x].text]+window.input[0]['INDTGAAA000013-1']['ent'][v[x].text]+window.input[0]['INDTGAAA000014-1']['ent'][v[x].text], window.input[0]['INDTGAAA000011-1']['vitals'][v[x].text]+window.input[0]['INDTGAAA000012-1']['vitals'][v[x].text]+window.input[0]['INDTGAAA000013-1']['vitals'][v[x].text]+window.input[0]['INDTGAAA000014-1']['vitals'][v[x].text],window.input[0]['INDTGAAA000014-1']['eye'][v[x].text]+window.input[0]['INDTGAAA000013-1']['eye'][v[x].text]+window.input[0]['INDTGAAA000012-1']['eye'][v[x].text]+window.input[0]['INDTGAAA000011-1']['eye'][v[x].text],window.input[0]['INDTGAAA000014-1']['physical'][v[x].text]+window.input[0]['INDTGAAA000013-1']['physical'][v[x].text]+window.input[0]['INDTGAAA000012-1']['physical'][v[x].text]+window.input[0]['INDTGAAA000011-1']['physical'][v[x].text]];
+var Y=[300,400,300,400,300];
+var School= {
+  x: xValue,
+  y: yValue,
+  type: 'bar',
+<!--  text: yValue,-->
+    name: 'School',
+  textposition: 'auto',
+  hoverinfo: 'value',
+  opacity: 1.0,
+  marker: {
+    color: '#0040ff',
+    line: {
+      color: 'rbg(8,48,107)',
+      width: 1.0
+    }
+  }
+};
+var Healpha = {
+  x: xValue,
+  y: Y,
+  type: 'bar',
+<!--  text: Y,-->
+  name:'Healpha',
+  textposition: 'auto',
+  hoverinfo: 'value',
+  marker: {
+    color: '#ff5e00',
+    line: {
+      color: 'rbg(255, 128, 0)',
+      width: 1.0
+    }
+  }
+};
+
+var data = [];
+data.push(Healpha);
+data.push(School);
+
+
+            var books = $('#select');
+            var books1 = $('#select1');
+            if (books.val() != 'default') {
+            var yValue2 = [window.input[0][v1[x1].value]['dental'][v[x].text], window.input[0][v1[x1].text]['ent'][v[x].text], window.input[0][v1[x1].value]['vitals'][v[x].text], window.input[0][v1[x1].value]['eye'][v[x].text], window.input[0][v1[x1].value]['physical'][v[x].text]];
+    var branch1 = {
+  x: xValue,
+  y: yValue2,
+  type: 'bar',
+<!--  text: yValue2,-->
+    name: 'Branch1',
+  textposition: 'auto',
+  hoverinfo: 'value',
+  marker: {
+    color: 'rgb(158,202,225)',
+    line: {
+      color: 'rbg(8,48,107)',
+      width: 1.0
+    }
+  }
+};
+data.push(branch1);
+console.log(data);
+
+            }
+  if (books1.val() != 'default') {
+    var yvalue3 = [window.input[0][v2[x2].value]['dental'][v[x].text], window.input[0][v2[x2].text]['ent'][v[x].text], window.input[0][v2[x2].value]['vitals'][v[x].text], window.input[0][v2[x2].value]['eye'][v[x].text], window.input[0][v2[x2].value]['physical'][v[x].text]];
+var branch2 = {
+  x: xValue,
+  y: yvalue3,
+  type: 'bar',
+<!--  text: yvalue3,-->
+  name: 'Branch2',
+  textposition: 'auto',
+  hoverinfo: 'value',
+  opacity: 1.0,
+  marker: {
+    color: '#0040ff',
+    line: {
+      color: 'rbg(8,48,107)',
+      width: 1.0
+    }
+  }
+};
+data.push(branch2);
+
+  }
+
+<!--        });-->
+
+
+
+
+console.log(data)
+var layout = {
+  title: 'Healpha Report',
+<!--  xaxis: {-->
+<!--    tickangle: -45-->
+<!--  },-->
+  font:{
+    family: 'Raleway, sans-serif',
+    size: '20',
+  },
+  bargap :0.05,
+  barmode: 'group'
+};
+Plotly.newPlot('myDiv', data, layout, {showSendToCloud:true});
+}
+</script>
+
+
+<script>
+
+function myFunction() {
+    var form = new FormData(document.getElementById("myfrm"));
+    window.inputValue = form.get("fname");
+    document.getElementById("demo").innerHTML =inputValue + '<br>' + "To download the Excel click here";
+<!--    document.getElementById("remove").remove();-->
+    $('#sec').show();
+}
+function process() {
+                $.ajax(
+                {
+                    type:'POST',
+                    contentType:'application/json;charset-utf-08',
+                    dataType:'json',
+                    url:'http://127.0.0.1:5000/excel',
+                    data: JSON.stringify(window.inputValue),
+                    success:function (data) {
+                    var tabularData = [{
+    "sheetName": "Dental",
+    "data": data[0].dental
+    },
+    {
+    "sheetName": "Physical",
+    "data": data[0].physical
+    },
+    {
+    "sheetName": "Ergonomics",
+    "data": data[0].ergonomics
+    },
+    {
+    "sheetName": "Vital",
+    "data": data[0].vital
+    },
+    {
+    "sheetName": "Hygiene",
+    "data": data[0].hygiene
+    },
+    {
+    "sheetName": "Ent",
+    "data": data[0].ent
+    },
+    {
+    "sheetName": "Eyes",
+    "data": data[0].eyes
+    }
+    ];
+
+    var options = {
+        fileName: "File Name"
+    };
+    Jhxlsx.export(tabularData, options);
+    var options = {
+        fileName: "jhreport",
+        extension: ".xlsx",
+        sheetName: "Sheet",
+        fileFullName: "report.xlsx",
+        header: true,
+        maxCellWidth: 20
+    };
+
+
+                    }
+                }
+            );
+}
+
+
+</script>
+<div id="remove" class="tabcontent" align="center">
+<form action="." name="form"  id="myfrm" >
+  Batch id:<input type="text" name="fname">
+   </form>
+    <br>
+<input id="btn" class='button' type="button" value="click" onclick="validateForm(); myFunction();"/>
+
+<b>
+<p id="demo" style="color:black;"></p></b>
+<p id="sec" style="display:none;"> <button  onclick="process()">Excel</button></p>
+    </div>
+
+
+
+
+
+<div id ='sun' class="tabcontent">
+   <h1 align="center"> <b> Data Analysis</b></h1>
+<div id ='main' align='center'>
+    <form>
+        <fieldset>
+            <legend style="font-size:160%;"><b>Selecting elements</b></legend>
+          <p>
+              <label><b>Select list</b></label>
+             <select id = 'myList1' onchange='branch_pop()'>
+               <option value='default' >default</option>
+               <option value = atleast>Atleast 1</option>
+             </select>
+          </p>
+       </fieldset>
+     </form>
+</div>
+<div id ='ab' align='center' style="display:none;">
+<form>
+    <fieldset>
+        <label><b>Branch list</b></label>
+            <select id='change1' onchange="pop1()">
+<!--            <option value='default'>default</option>-->
+        </select>
+        &nbsp;&nbsp;
+        <label><b>Class list</b></label>
+        <select id='change2'>
+            <option value='all'>all</option>
+            <option value='I'>I</option>
+            <option value='II'>II</option>
+            <option value='III'>III</option>
+            <option value='IV'>IV</option>
+            <option value='V'>V</option>
+            <option value='VI'>VI</option>
+            <option value='VII'>VII</option>
+            <option value='VIII'>VIII</option>
+            <option value='IX'>IX</option>
+            <option value='X'>X</option>
+        </select>
+        &nbsp;&nbsp;
+        <label><b>Section list</b></label>
+        <select id='change3'>
+            <option value='all'>all</option>
+            <option value='A'>A</option>
+            <option value='B'>B</option>
+        </select>
+        &nbsp;&nbsp;
+        <label><b>Gender </b></label>
+        <select id='change4'>
+            <option value='all'>all</option>
+            <option value='male'>male</option>
+            <option value='female'>female</option>
+        </select>
+       </fieldset>
+    </form>
+
+    <br>
+    <button type='button' class='button' id='check1' onclick='pie()'><b>Display Data</b></button>
+    <br>
+    <br>
+    <div id="myDiv1"> </div>
+    </div>
+<script>
+function pop1(){
+for (i=2;i<5;i++)
+    {
+var x = $('#change' +i);
+x.empty();
+    }
+var x = document.getElementById('change1').selectedIndex;
+var v= document.getElementById('change1').options;
+all_class=['all','I','II','III','IV','V','VI','VII','VIII','IX','X']
+all_sec=['all','A','B','C']
+all_gen=['all','male','female']
+fin_class=[]
+fin_gen=[]
+fin_sec=[]
+$.ajax(
+                {
+                    url:'http://127.0.0.1:5000/test2',
+                    data: JSON.stringify({'data' : v[x].value}),
+                    success:function (data) {
+
+                    $.each(all_class,function( val,text){
+                    console.log(text)
+                    if($.inArray(text,data[0]['class'])!=-1){
+                    var select2=$('#change2');
+                    select2.append(
+                    $('<option></option>').val(text).html(text)
+                    );
+                    };
+                    });
+                    $.each(all_gen,function( val,text){
+                    if($.inArray(text,data[0]['gender'])!=-1){
+                    var select4=$('#change4');
+                    select4.append(
+                    $('<option></option>').val(text).html(text)
+                    );
+                    };
+                    });
+                    $.each(all_sec,function( val,text){
+                    if($.inArray(text,data[0]['section'])!=-1){
+                    var select3= $('#change3');
+                    select3.append(
+                    $('<option></option>').val(text).html(text)
+                    );
+                    };
+                    });
+
+                    }
+
+
+  });
+}
+function pie()
+{
+para=[];
+for (i=1;i<5;i++)
+    {
+var x = document.getElementById('change' +i).selectedIndex;
+var v= document.getElementById('change' +i).options;
+console.log(v[x].value)
+para.push(v[x].value)
+    }
+console.log(para)
+$.ajax(
+                {
+                    url:'http://127.0.0.1:5000/test1',
+                    data: JSON.stringify({"data": para}),
+                    success:function (data) {
+                    window.drill=data
+                    var data =
+    [{
+  type: "sunburst",
+  ids: [
+    "Dental", "Vitals", "Ent","Eyes" , "Physical", " Ergonomics", "Hygiene" ,
+    'Bleeding', 'Impaction', 'Inflammation', 'Teeth condition', 'Gum Vitality', 'Alignment','Bad breath', 'Cavities', 'Plaque', 'Strains', 'Tarter', 'Dental Vitality',
+    'BMI', 'BP (Systolic)', 'BP (Diastolic)', 'Height','Oxygen saturation','Pulse rate', 'Respiratoryrate', 'Spirometer', 'Temperature', 'Weight',
+    'LeftDischarge', 'LeftHygiene', 'LeftPerforation', 'LeftPinna', 'LeftPit','LeftWaxImpacted', 'RightDischarge', 'RightHygiene', 'RightPerforation', 'RightPinnacolor','RightPitcolor', 'RightWaxImpacted', 'LeftHypertrophideturbinate','Right Hyper trophideturbinate', 'Thrush', 'Tongue glossitis', 'Tongue tie', 'Tonsils',
+    'AbnormalEyeMovement', 'Anisocoria', 'Anisometropia', 'Astigmatism','Bitotspots','Cornealscar', 'Gazeasymmetry', 'Hyperopia', 'Myopia', 'Squint', 'VisionScreeningResult','Wearglass',
+    'Abdomen', 'Back', 'Chest', 'Clubbing', 'Cyanosis', 'Edema','AbnormalFingers', 'ExtraFingers', 'FusedFingers', 'Icterus', 'Koilonychia', 'Lowershape','LowerSwellingOfJoints', 'Lymphadenopathy', 'Pallor', 'Thyroid', 'Abnormal Toes', 'ExtraToes','FusedToes', 'UpperShape', 'UpperSwellingOfJoint', 'Abdominal distention', 'Hernia','Liver', 'Mass', 'Scars', 'Spleen', 'Visible Blood Vessels', 'Cardiores', 'Murmur','Cranial Nerves', 'Mental Status Testing', 'Power', 'Reflexes', 'Sensation', 'Tone', 'Respres','Breathres',
+    'JointMovements', 'MuscleStrength', 'OverallBone',
+    'HairColour', 'HairCondition', 'HairDandruff', 'HairLice', 'Nails', 'SkinCondition','SkinRash'],
+
+  labels: [
+    "Dental", "Vitals", "Ent","Eyes", "Physical", " Ergonomics", "Hygiene",
+    'Bleeding<br> (' +window.drill[0]['dental']['Bleeding'] + '%)', 'Impaction (' +window.drill[0]['dental']['Impaction'] + '%)', 'Inflammation <br>(' +window.drill[0]['dental']['Inflamation'] +'%)', 'Teeth <br> condition<br> (' +window.drill[0]['dental']['Teethcondition'] +'%)', 'Gum Vitality <br>(' +window.drill[0]['dental']['Gum Vitality'] +'%)', 'Alignment <br>(' +window.drill[0]['dental']['Alignment'] +'%)','Bad breath <br>(' + window.drill[0]['dental']['Badbreath'] + '%)', 'Cavities <br>(' +window.drill[0]['dental']['Cavities'] +'%)', 'Plaque (' +window.drill[0]['dental']['Plaque'] +'%)', 'Strains <br>(' +window.drill[0]['dental']['Strains'] +'%)', 'Tarter (' +window.drill[0]['dental']['Tarter'] +'%)', 'Dental <br> Vitality (' +window.drill[0]['dental']['Dental Vitality'] +'%)',
+    'BMI (' +window.drill[0]['vitals']['BMI'] +'%)', 'BP <br> (Systolic)(' +window.drill[0]['vitals']['BP (Systolic)'] +'%)', 'BP<br> (Diastolic)(' +window.drill[0]['vitals']['BP (Diastolic)'] +'%)', 'Height(' +window.drill[0]['vitals']['Height'] +'%)','Oxygen<br> saturation(' +window.drill[0]['vitals']['Oxygensaturation'] +'%)','Pulse rate<br>(' +window.drill[0]['vitals']['Pulserate'] +'%)', 'Respiratoryrate <br>(' +window.drill[0]['vitals']['Respiratoryrate'] +'%)', 'Spirometer(' +window.drill[0]['vitals']['Spirometer'] +'%)', 'Temperature <br>(' +window.drill[0]['vitals']['Temperature'] +'%)', 'Weight(' +window.drill[0]['vitals']['Weight'] +'%)',
+    'Left<br> Discharge (' + window.drill[0]['ent']['LeftDischarge']+'%)', 'Left <br>Hygiene (' + window.drill[0]['ent']['LeftHygiene']+'%)', 'Left<br>Perforation (' + window.drill[0]['ent']['LeftPerforation']+'%)', 'Left<br>Pinna (' + window.drill[0]['ent']['LeftPinna']+'%)', 'Left<br>Pit (' + window.drill[0]['ent']['LeftPit']+'%)','Left<br>WaxImpacted (' + window.drill[0]['ent']['LeftWaxImpacted']+'%)', 'Right<br>Discharge (' + window.drill[0]['ent']['RightDischarge']+'%)', 'Right<br>Hygiene (' + window.drill[0]['ent']['RightHygiene']+'%)', 'Right<br>Perforation (' + window.drill[0]['ent']['RightPerforation']+'%)', 'Right<br>Pinnacolor (' + window.drill[0]['ent']['RightPinnacolor']+'%)','Right<br>Pitcolor (' + window.drill[0]['ent']['RightPitcolor']+'%)', 'Right<br>WaxImpacted (' + window.drill[0]['ent']['RightWaxImpacted']+'%)', 'Left<br>Hypertrophideturbinate<br>(' + window.drill[0]['ent']['LeftHypertrophideturbinate']+'%)','Right<br>Hypertrophideturbinate<br>(' + window.drill[0]['ent']['RightHypertrophideturbinate']+'%)', 'Thrush<br>(' + window.drill[0]['ent']['Thrush']+'%)', 'Tongue<br>glossitis<br>(' + window.drill[0]['ent']['Tongueglossitis']+'%)', 'Tongue<br>tie (' + window.drill[0]['ent']['Tonguetie']+'%)', 'Tonsils<br>(' + window.drill[0]['ent']['Tonsils']+'%)',
+    'Abnormal<br>Eye Movement ('+window.drill[0]['eye']['AbnormalEyeMovement']+'%)', 'Anisocoria<br>('+window.drill[0]['eye']['Anisocoria']+'%)', 'Anisometropia<br>('+window.drill[0]['eye']['Anisometropia']+'%)', 'Astigmatism <br>('+window.drill[0]['eye']['Astigmatism']+'%)','Bitotspots<br>('+window.drill[0]['eye']['Bitotspots']+'%)','Cornealscar<br>('+window.drill[0]['eye']['Cornealscar']+'%)', 'Gazeasymmetry<br>('+window.drill[0]['eye']['Gazeasymmetry']+'%)', 'Hyperopia<br>('+window.drill[0]['eye']['Hyperopia']+'%)', 'Myopia<br>('+window.drill[0]['eye']['Myopia']+'%)', 'Squint ('+window.drill[0]['eye']['Squint']+'%)', 'Vision <br>Screening <br>Result ('+window.drill[0]['eye']['VisionScreeningResult']+'%)','Wearglass<br>('+window.drill[0]['eye']['Wearglass']+'%)',
+    'Abdomen ('+ window.drill[0]['physical']['Abdomen']+'%)', 'Back ('+ window.drill[0]['physical']['Back']+'%)', 'Chest ('+ window.drill[0]['physical']['Chest']+'%)', 'Clubbing ('+ window.drill[0]['physical']['Clubbing']+'%)', 'Cyanosis ('+ window.drill[0]['physical']['Cyanosis']+'%)', 'Edema ('+ window.drill[0]['physical']['Edema']+'%)','Abnormal Fingers ('+ window.drill[0]['physical']['AbnormalFingers']+'%)', 'Extra Fingers ('+ window.drill[0]['physical']['ExtraFingers']+'%)', 'FusedFingers ('+ window.drill[0]['physical']['FusedFingers']+'%)', 'Icterus ('+ window.drill[0]['physical']['Icterus']+'%)', 'Koilonychia ('+ window.drill[0]['physical']['Koilonychia']+'%)', 'Lower shape ('+ window.drill[0]['physical']['Lowershape']+'%)','Lower Swelling<br> Of Joints ('+ window.drill[0]['physical']['LowerSwellingOfJoints']+'%)', 'Lymphadenopathy ('+ window.drill[0]['physical']['Lymphadenopathy']+'%)', 'Pallor ('+ window.drill[0]['physical']['Pallor']+'%)', 'Thyroid ('+ window.drill[0]['physical']['Thyroid']+'%)', 'Abnormal Toes ('+ window.drill[0]['physical']['AbnormalToes']+'%)', 'ExtraToes ('+ window.drill[0]['physical']['ExtraToes']+'%)','FusedToes ('+ window.drill[0]['physical']['FusedToes']+'%)', 'UpperShape ('+ window.drill[0]['physical']['UpperShape']+'%)', 'Upper Swelling<br> Of Joint ('+ window.drill[0]['physical']['UpperSwellingOfJoint']+'%)', 'Abdominal distention ('+ window.drill[0]['physical']['Abdominaldistention']+'%)', 'Hernia ('+ window.drill[0]['physical']['Hernia']+'%)','Liver ('+ window.drill[0]['physical']['Liver']+'%)', 'Mass ('+ window.drill[0]['physical']['Mass']+'%)', 'Scars ('+ window.drill[0]['physical']['Scars']+'%)', 'Spleen ('+ window.drill[0]['physical']['Spleen']+'%)', 'Visible Blood Vessels ('+ window.drill[0]['physical']['VisibleBloodVessels']+'%)', 'Cardiores ('+ window.drill[0]['physical']['Cardiores']+'%)', 'Murmur ('+ window.drill[0]['physical']['Murmur']+'%)','Cranial Nerves ('+ window.drill[0]['physical']['CranialNerves']+'%)', 'Mental Status Testing ('+ window.drill[0]['physical']['MentalStatusTesting']+'%)', 'Power ('+ window.drill[0]['physical']['Power']+'%)', 'Reflexes ('+ window.drill[0]['physical']['Reflexes']+'%)', 'Sensation ('+ window.drill[0]['physical']['Sensation']+'%)', 'Tone ('+ window.drill[0]['physical']['Tone']+'%)', 'Respres ('+ window.drill[0]['physical']['Respres']+'%)','Breathres ('+ window.drill[0]['physical']['Breathres']+'%)',
+    'Joint <br>Movements ('+window.drill[0]['ergonomics']['JointMovements']+'%)', 'Muscle <br>Strength (' +window.drill[0]['ergonomics']['MuscleStrength']+ '%)', 'Overall<br> Bone (' +window.drill[0]['ergonomics']['OverallBone']+ '%)',
+    'Hair Colour ('+ window.drill[0]['hygiene']['HairColour'] +'%)', 'Hair Condition ('+window.drill[0]['hygiene']['HairCondition']+ '%)', 'Hair <br>Dandruff ('+ window.drill[0]['hygiene']['HairDandruff'] +'%)', 'HairLice ('+window.drill[0]['hygiene']['HairLice']+'%)', 'Nails ('+window.drill[0]['hygiene']['Nails'] + '%)', 'Skin Condition <br>('+window.drill[0]['hygiene']['SkinCondition']+'%)','Skin Rash<br> ('+window.drill[0]['hygiene']['SkinRash']+'%)'
+  ],
+  parents: [
+    "", "", "", "","","","",
+    "Dental","Dental","Dental","Dental","Dental","Dental","Dental","Dental","Dental","Dental","Dental","Dental",
+    "Vitals","Vitals","Vitals","Vitals","Vitals","Vitals","Vitals","Vitals","Vitals","Vitals",
+    "Ent","Ent","Ent","Ent","Ent","Ent","Ent","Ent","Ent","Ent","Ent","Ent","Ent","Ent","Ent","Ent","Ent","Ent",
+    "Eyes","Eyes","Eyes","Eyes","Eyes","Eyes","Eyes","Eyes","Eyes","Eyes","Eyes","Eyes",
+    "Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical","Physical",
+    " Ergonomics"," Ergonomics"," Ergonomics",
+    "Hygiene","Hygiene","Hygiene","Hygiene","Hygiene","Hygiene","Hygiene",],
+
+<!--    values: [ 100,100,100,100,100,100,100,-->
+<!--    window.drill[0]['dental']['Bleeding'],window.drill[0]['dental']['Impaction'],window.drill[0]['dental']['Inflammation'],window.drill[0]['dental']['Teethcondition'],window.drill[0]['dental']['Gum Vitality'],window.drill[0]['dental']['Alignment'],window.drill[0]['dental']['Badbreath'],window.drill[0]['dental']['Cavities'],window.drill[0]['dental']['Plaque'],window.drill[0]['dental']['Strains'],window.drill[0]['dental']['Tarter'],window.drill[0]['dental']['Dental Vitality'],-->
+<!--    window.drill[0]['vitals']['BMI'],window.drill[0]['vitals']['BP (Systolic)'],window.drill[0]['vitals']['BP (Diastolic)'],window.drill[0]['vitals']['Height'],window.drill[0]['vitals']['Oxygensaturation'],window.drill[0]['vitals']['Pulserate'],window.drill[0]['vitals']['Respiratoryrate'],window.drill[0]['vitals']['Spirometer'],window.drill[0]['vitals']['Temperature'],window.drill[0]['vitals']['Weight'],-->
+<!--    window.drill[0]['ent']['LeftDischarge'],window.drill[0]['ent']['LeftHygiene'],window.drill[0]['ent']['LeftPerforation'],window.drill[0]['ent']['LeftPinna'],window.drill[0]['ent']['LeftPit'],window.drill[0]['ent']['LeftWaxImpacted'],window.drill[0]['ent']['RightDischarge'],window.drill[0]['ent']['RightHygiene'],window.drill[0]['ent']['RightPerforation'],window.drill[0]['ent']['RightPinnacolor'],window.drill[0]['ent']['RightPitcolor'],window.drill[0]['ent']['RightWaxImpacted'],window.drill[0]['ent']['LeftHypertrophideturbinate'],window.drill[0]['ent']['RightHypertrophideturbinate'],window.drill[0]['ent']['Thrush'],window.drill[0]['ent']['Tongueglossitis'],window.drill[0]['ent']['Tonguetie'],window.drill[0]['ent']['Tonsils'],-->
+<!--    window.drill[0]['eye']['AbnormalEyeMovement'],window.drill[0]['eye']['Anisocoria'],window.drill[0]['eye']['Anisometropia'],window.drill[0]['eye']['Astigmatism'],window.drill[0]['eye']['Bitotspots'],window.drill[0]['eye']['Cornealscar'],window.drill[0]['eye']['Gazeasymmetry'],window.drill[0]['eye']['Hyperopia'],window.drill[0]['eye']['Myopia'],window.drill[0]['eye']['Squint'],window.drill[0]['eye']['VisionScreeningResult'],window.drill[0]['eye']['Wearglass'],-->
+<!--    window.drill[0]['physical']['Abdomen'],window.drill[0]['physical']['Back'],window.drill[0]['physical']['Chest'],window.drill[0]['physical']['Clubbing'],window.drill[0]['physical']['Cyanosis'],window.drill[0]['physical']['Edema'],window.drill[0]['physical']['AbnormalFingers'],window.drill[0]['physical']['ExtraFingers'],window.drill[0]['physical']['FusedFingers'],window.drill[0]['physical']['Icterus'],window.drill[0]['physical']['Koilonychia'],window.drill[0]['physical']['Lowershape'],window.drill[0]['physical']['LowerSwellingOfJoints'],window.drill[0]['physical']['Lymphadenopathy'],window.drill[0]['physical']['Pallor'],window.drill[0]['physical']['Thyroid'],window.drill[0]['physical']['AbnormalToes'],window.drill[0]['physical']['ExtraToes'],window.drill[0]['physical']['FusedToes'],window.drill[0]['physical']['UpperShape'],window.drill[0]['physical']['UpperSwellingOfJoint'],window.drill[0]['physical']['Abdominaldistention'],window.drill[0]['physical']['Hernia'],window.drill[0]['physical']['Liver'],window.drill[0]['physical']['Mass'],window.drill[0]['physical']['Scars'],window.drill[0]['physical']['Spleen'],window.drill[0]['physical']['VisibleBloodVessels'],window.drill[0]['physical']['Cardiores'],window.drill[0]['physical']['Murmur'],window.drill[0]['physical']['CranialNerves'],window.drill[0]['physical']['MentalStatusTesting'],window.drill[0]['physical']['Power'],window.drill[0]['physical']['Reflexes'],window.drill[0]['physical']['Sensation'],window.drill[0]['physical']['Tone'],window.drill[0]['physical']['Respres'],window.drill[0]['physical']['Breathres'],-->
+<!--    window.drill[0]['ergonomics']['JointMovements'],window.drill[0]['ergonomics']['MuscleStrength'],window.drill[0]['ergonomics']['OverallBone'],-->
+<!--    window.drill[0]['hygiene']['HairColour'],window.drill[0]['hygiene']['HairCondition'],window.drill[0]['hygiene']['HairDandruff'],window.drill[0]['hygiene']['HairLice'],window.drill[0]['hygiene']['Nails'],window.drill[0]['hygiene']['SkinCondition'],window.drill[0]['hygiene']['SkinRash'],-->
+<!--    ],-->
+
+
+  outsidetextfont: {size: 20, color: "#377eb8"},
+  // leaf: {opacity: 0.4},
+  marker: {line: {width: 2}},
+    }];
+
+var layout = {
+  margin: {l: 0, r: 0, b: 0, t:0},
+<!--  sunburstcolorway:["#636efa","#ef553b","#00cc96"],-->
+};
+
+
+Plotly.newPlot('myDiv1', data, layout);
+                    }
+                }
+       );
+
+
+}
+</script>
+</div>
+</body>
+
+</html>

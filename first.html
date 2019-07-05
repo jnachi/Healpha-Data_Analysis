@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lets finish</title>
+    <a href="http://concent.in/" ><img src="C:\Users\91984\branch\static\logo2.png" alt="Smiley face" ></a>
+    <br>
+<!--    <link rel="stylesheet" type="text/css" href="style.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="C:\Users\91984\server\static\jhxlsx.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+        crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <script>
+    $.ajaxSetup({
+    crossDomain:true
+    })
+    </script>
+    <script>
+                $.ajax(
+                {
+                    type:'POST',
+                    contentType:'application/json;charset-utf-08',
+                    dataType:'json',
+                    url:'http://127.0.0.1:5000/test',
+<!--                    data: JSON.stringify(wi),-->
+                    success:function (data) {
+                    window.input=data
+                    console.log(data)
+
+                    }
+  });
+    </script>
+
+    <style>
+  .button {
+  background-color: #595959	;
+  border: none;
+  color: black;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 2px 2px;
+  cursor: pointer;
+}
+#myDiv {
+  background-color: light grey;
+  width: 500px;
+  border: 5px solid black;
+  padding: 50px;
+  margin: 50px;
+}
+    </style>
+
+</head>
+<body style="background-color:#737373;">
+    <h1 align="center"> <b> Data Analysis</b></h1>
+
+
+<script>
+    function branch(){
+
+    branch_id=Object.keys(window.input[0]);
+    for(i = 0; i < branch_id.length+1; i++)
+    {
+    var x = document.getElementById('select');
+    x.remove(x.options[1]);
+    }
+       var select = document.getElementById('select');
+       var option = document.createElement('OPTION');
+                 txt = document.createTextNode('default');
+                 option.appendChild(txt);
+                 option.setAttribute('value','default');
+                 select.insertBefore(option,select.lastChild);
+             for(var i = 0; i < branch_id.length; i++)
+             {
+                 var option = document.createElement('OPTION');
+                 txt = document.createTextNode(branch_id[i]);
+                 option.appendChild(txt);
+                 option.setAttribute('value',branch_id[i]);
+                 select.insertBefore(option,select.lastChild);
+
+             }
+    branch_id.splice(0, branch_id.length);
+}
+   function branch1(){
+
+    branch_id=Object.keys(window.input[0]);
+    for(i = 0; i < branch_id.length+1; i++)
+    {
+    var x = document.getElementById('select1');
+    x.remove(x.options[1]);
+    }
+       var select = document.getElementById('select1');
+       var option = document.createElement('OPTION');
+                 txt = document.createTextNode('default');
+                 option.appendChild(txt);
+                 option.setAttribute('value','default');
+                 select.insertBefore(option,select.lastChild);
+             for(var i = 0; i < branch_id.length; i++)
+             {
+                 var option = document.createElement('OPTION');
+                 txt = document.createTextNode(branch_id[i]);
+                 option.appendChild(txt);
+                 option.setAttribute('value',branch_id[i]);
+                 select.insertBefore(option,select.lastChild);
+
+             }
+    branch_id.splice(0, branch_id.length);
+
+
+}
+
+
+</script>
+
+<div id ='aa' align='center'>
+    <form>
+        <fieldset>
+            <legend style="font-size:160%;"><b>Selecting elements</b></legend>
+          <p>
+              <label><b>Select list</b></label>
+             <select id = 'myList' onchange='branch(); branch1();'>
+               <option value='default' >default</option>
+               <option value = red>red</option>
+               <option value = amber>amber</option>
+               <option value = atleast>atleast</option>
+             </select>
+          </p>
+       </fieldset>
+     </form>
+</div>
+
+<div id ='ab' align='center'>
+<form>
+    <fieldset>
+        <legend style="font-size:160%;"><b>Data to displayed</b></legend>
+        <label><b>Branch list</b></label>
+            <select id='select'>
+<!--            <option value='default'>default</option>-->
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label><b>Branch list</b></label>
+            <select id='select1'>
+        </select>
+
+       </fieldset>
+</form>
+    <br>
+
+    <button type='button' class='button' id='check' onclick='graph()'><b>Display Data</b></button>
+</div>
+<br>
+<div id='myDiv' align ='center'></div>
+<script>
+    function graph(){
+
+  var x1 = document.getElementById('select').selectedIndex;
+  var v1 = document.getElementById('select').options;
+  var x = document.getElementById('myList').selectedIndex;
+  var v= document.getElementById('myList').options;
+   var x2 = document.getElementById('select1').selectedIndex;
+  var v2 = document.getElementById('select1').options;
+   var xValue = ['Dental','ENT', 'Vitals','Eye','Physical'];
+
+    var temp1 = $('#select')
+    var temp2 = $('#select1')
+
+var yValue = [window.input[0]['INDTGAAA000011-1']['dental'][v[x].text]+window.input[0]['INDTGAAA000012-1']['dental'][v[x].text]+window.input[0]['INDTGAAA000013-1']['dental'][v[x].text]+window.input[0]['INDTGAAA000014-1']['dental'][v[x].text], window.input[0]['INDTGAAA000011-1']['ent'][v[x].text]+window.input[0]['INDTGAAA000012-1']['ent'][v[x].text]+window.input[0]['INDTGAAA000013-1']['ent'][v[x].text]+window.input[0]['INDTGAAA000014-1']['ent'][v[x].text], window.input[0]['INDTGAAA000011-1']['vitals'][v[x].text]+window.input[0]['INDTGAAA000012-1']['vitals'][v[x].text]+window.input[0]['INDTGAAA000013-1']['vitals'][v[x].text]+window.input[0]['INDTGAAA000014-1']['vitals'][v[x].text],window.input[0]['INDTGAAA000014-1']['eye'][v[x].text]+window.input[0]['INDTGAAA000013-1']['eye'][v[x].text]+window.input[0]['INDTGAAA000012-1']['eye'][v[x].text]+window.input[0]['INDTGAAA000011-1']['eye'][v[x].text],window.input[0]['INDTGAAA000014-1']['physical'][v[x].text]+window.input[0]['INDTGAAA000013-1']['physical'][v[x].text]+window.input[0]['INDTGAAA000012-1']['physical'][v[x].text]+window.input[0]['INDTGAAA000011-1']['physical'][v[x].text]];
+var Y=[300,400,300,400,300];
+var School= {
+  x: xValue,
+  y: yValue,
+  type: 'bar',
+<!--  text: yValue,-->
+    name: 'School',
+  textposition: 'auto',
+  hoverinfo: 'value',
+  opacity: 1.0,
+  marker: {
+    color: '#0040ff',
+    line: {
+      color: 'rbg(8,48,107)',
+      width: 1.0
+    }
+  }
+};
+var Healpha = {
+  x: xValue,
+  y: Y,
+  type: 'bar',
+<!--  text: Y,-->
+  name:'Healpha',
+  textposition: 'auto',
+  hoverinfo: 'value',
+  marker: {
+    color: '#ff5e00',
+    line: {
+      color: 'rbg(255, 128, 0)',
+      width: 1.0
+    }
+  }
+};
+
+var data = [];
+data.push(Healpha);
+data.push(School);
+
+
+            var books = $('#select');
+            var books1 = $('#select1');
+            if (books.val() != 'default') {
+            var yValue2 = [window.input[0][v1[x1].value]['dental'][v[x].text], window.input[0][v1[x1].text]['ent'][v[x].text], window.input[0][v1[x1].value]['vitals'][v[x].text], window.input[0][v1[x1].value]['eye'][v[x].text], window.input[0][v1[x1].value]['physical'][v[x].text]];
+    var branch1 = {
+  x: xValue,
+  y: yValue2,
+  type: 'bar',
+<!--  text: yValue2,-->
+    name: 'Branch1',
+  textposition: 'auto',
+  hoverinfo: 'value',
+  marker: {
+    color: 'rgb(158,202,225)',
+    line: {
+      color: 'rbg(8,48,107)',
+      width: 1.0
+    }
+  }
+};
+data.push(branch1);
+console.log(data);
+
+            }
+  if (books1.val() != 'default') {
+    var yvalue3 = [window.input[0][v2[x2].value]['dental'][v[x].text], window.input[0][v2[x2].text]['ent'][v[x].text], window.input[0][v2[x2].value]['vitals'][v[x].text], window.input[0][v2[x2].value]['eye'][v[x].text], window.input[0][v2[x2].value]['physical'][v[x].text]];
+var branch2 = {
+  x: xValue,
+  y: yvalue3,
+  type: 'bar',
+<!--  text: yvalue3,-->
+  name: 'Branch2',
+  textposition: 'auto',
+  hoverinfo: 'value',
+  opacity: 1.0,
+  marker: {
+    color: '#0040ff',
+    line: {
+      color: 'rbg(8,48,107)',
+      width: 1.0
+    }
+  }
+};
+data.push(branch2);
+
+  }
+
+<!--        });-->
+
+
+
+
+console.log(data)
+var layout = {
+  title: 'Healpha Report',
+<!--  xaxis: {-->
+<!--    tickangle: -45-->
+<!--  },-->
+  font:{
+    family: 'Raleway, sans-serif',
+    size: '20',
+  },
+  bargap :0.05,
+  barmode: 'group'
+};
+Plotly.newPlot('myDiv', data, layout, {showSendToCloud:true});
+}
+</script>
+
+
+</body>
+
+</html>

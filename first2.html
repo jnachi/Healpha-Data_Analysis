@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lets finish</title>
+    <a href="http://concent.in/" ><img src="C:\Users\91984\branch\static\logo2.png" alt="Smiley face" ></a>
+    <br>
+<!--    <link rel="stylesheet" type="text/css" href="style.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="C:\Users\91984\server\static\jhxlsx.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+        crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <script>
+    $.ajaxSetup({
+    crossDomain:true
+    })
+    </script>
+    <script>
+                $.ajax(
+                {
+                    type:'POST',
+                    contentType:'application/json;charset-utf-08',
+                    dataType:'json',
+                    url:'http://127.0.0.1:5000/test',
+<!--                    data: JSON.stringify(wi),-->
+                    success:function (data) {
+                    window.input=data
+                    console.log(data)
+
+                    }
+  });
+    </script>
+
+    <style>
+  .button {
+  background-color: #595959	;
+  border: none;
+  color: black;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 2px 2px;
+  cursor: pointer;
+}
+
+    </style>
+
+</head>
+<body style="background-color:#737373;">
+    <h1 align="center"> <b> Data Analysis</b></h1>
+
+
+<script>
+window.id=[]
+window.id.push('select')
+window.id.push('select1')
+console.log(window.id)
+function pop(){
+$('#ab').show();
+for(i=0;i<window.id.length;i++)
+{
+branch_id=Object.keys(window.input[0]);
+for (j=0;j<branch_id.length+1; j++)
+{
+    var x = document.getElementById(window.id[i]);
+    x.remove(x.options[1]);
+}
+ var select = document.getElementById(window.id[i]);
+ console.log(select)
+ var option = document.createElement('OPTION');
+ txt = document.createTextNode('default');
+ option.appendChild(txt);
+ option.setAttribute('value','default');
+ select.insertBefore(option,select.lastChild);
+
+ for(var k = 0; k < branch_id.length; k++)
+             {
+                 var option = document.createElement('OPTION');
+                 txt = document.createTextNode(branch_id[k]);
+                 option.appendChild(txt);
+                 option.setAttribute('value',branch_id[k]);
+<!--                 select.insertBefore(option,select.lastChild);-->
+                select.options.add(option)
+
+             }
+  }
+ branch_id.splice(0, branch_id.length);
+}
+
+
+
+</script>
+
+<div id ='aa' align='center'>
+    <form>
+        <fieldset>
+            <legend style="font-size:160%;"><b>Selecting elements</b></legend>
+          <p>
+              <label><b>Select list</b></label>
+             <select id = 'myList' onchange='pop()'>
+               <option value='default' >default</option>
+               <option value = red>red</option>
+               <option value = amber>amber</option>
+               <option value = atleast>atleast</option>
+             </select>
+          </p>
+       </fieldset>
+     </form>
+</div>
+
+<div id ='ab' align='center' style="display:none;">
+<form>
+    <fieldset>
+        <legend style="font-size:160%;"><b>Data to displayed</b></legend>
+        <label><b>Branch list</b></label>
+            <select id='select'>
+<!--            <option value='default'>default</option>-->
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label><b>Branch list</b></label>
+            <select id='select1'>
+        </select>
+        <br>
+        <br>
+        <div id="container"></div>
+    <button type='button' class='button' id='add' onclick='create()'><b> + </b></button>
+
+       </fieldset>
+</form>
+    <br>
+    <button type='button' class='button' id='check' onclick='graph()'><b>Display Data</b></button>
+</div>
+<br>
+<div id='myDiv' align ='center'></div>
+<script>
+window.count=1
+function create(){
+if (window.count<7){
+
+    branch_id=Object.keys(window.input[0]);
+ var chk = document.createElement('select');
+ console.log(chk)
+ chk.setAttribute('id', 'add'+ window.count);
+ console.log('add'+window.count);
+   var option = document.createElement('OPTION');
+
+option.value = "default";
+option.text = "default";
+
+// add the option to the dropdown DOM node
+chk.options.add(option);
+
+
+ for(var k = 0; k < branch_id.length; k++)
+             {
+                 var option = document.createElement('OPTION');
+                    option.value = branch_id[k];
+                    option.text = branch_id[k];
+                    // add the option to the dropdown DOM node
+                    chk.add(option);
+
+                    }
+   var lbl = document.createElement('label');  // CREATE LABEL.
+            lbl.setAttribute('for', 'Branch list     ');
+            lbl.setAttribute('id', branch_id[i] + 'test');
+            lbl.style.marginLeft = "20px";
+            lbl.appendChild(document.createTextNode('Branch list     '));
+
+
+  window.id.push('add'+window.count);
+  container.appendChild(lbl);
+  container.appendChild(chk);
+
+  window.count += 1;
+  console.log(window.id)
+  }
+  else{
+  alert("Can't create more Drop downs");
+  }
+}
+    function graph(){
+
+  var x1 = document.getElementById('select').selectedIndex;
+  var v1 = document.getElementById('select').options;
+  var x = document.getElementById('myList').selectedIndex;
+  var v= document.getElementById('myList').options;
+   var x2 = document.getElementById('select1').selectedIndex;
+  var v2 = document.getElementById('select1').options;
+      branch_id=Object.keys(window.input[0]);
+
+   var xValue = ['Dental','ENT', 'Vitals','Eye','Physical'];
+
+
+
+var yValue=[0,0,0,0,0]
+for(z=0;z<branch_id.length;z++)
+{
+ yValue[0] += window.input[0][branch_id[z]]['dental'][v[x].text]
+ yValue[1] += window.input[0][branch_id[z]]['ent'][v[x].text]
+ yValue[2] +=window.input[0][branch_id[z]]['vitals'][v[x].text]
+ yValue[3] +=window.input[0][branch_id[z]]['eye'][v[x].text]
+ yValue[4] +=window.input[0][branch_id[z]]['physical'][v[x].text]
+ }
+ var Y=[300,400,300,400,300];
+var School= {
+  x: xValue,
+  y: yValue,
+  type: 'bar',
+<!--  text: yValue,-->
+    name: 'School',
+  textposition: 'auto',
+  hoverinfo: 'value',
+  opacity: 1.0,
+  marker: {
+    color: '#0040ff',
+    line: {
+      color: 'rbg(8,48,107)',
+      width: 1.0
+    }
+  }
+};
+var Healpha = {
+  x: xValue,
+  y: Y,
+  type: 'bar',
+<!--  text: Y,-->
+  name:'Healpha',
+  textposition: 'auto',
+  hoverinfo: 'value',
+  marker: {
+    color: '#ff5e00',
+    line: {
+      color: 'rbg(255, 128, 0)',
+      width: 1.0
+    }
+  }
+};
+
+var data = [];
+data.push(Healpha);
+data.push(School);
+
+for (m=0;m<window.id.length;m++)
+{
+var books= $('#'+window.id[m])
+if (books.val() != 'default') {
+ var b = document.getElementById(window.id[m]).selectedIndex;
+  var c= document.getElementById(window.id[m]).options;
+  var yValue2 = [window.input[0][c[b].value]['dental'][v[x].text], window.input[0][c[b].text]['ent'][v[x].text], window.input[0][c[b].value]['vitals'][v[x].text], window.input[0][c[b].value]['eye'][v[x].text], window.input[0][c[b].value]['physical'][v[x].text]];
+     var branch = {
+  x: xValue,
+  y: yValue2,
+  type: 'bar',
+<!--  text: yValue2,-->
+    name: branch_id[b],
+  textposition: 'auto',
+  hoverinfo: 'value',
+  marker: {
+    line: {
+      width: 1.0
+    },
+  },
+};
+data.push(branch);
+}
+}
+
+var layout = {
+  font:{
+    family: 'Raleway, sans-serif',
+    size: '20',
+  },
+  bargap :0.05,
+  barmode: 'group'
+};
+
+Plotly.newPlot('myDiv', data, layout, {showSendToCloud:true});
+}
+</script>
+
+
+</body>
+
+</html>
